@@ -1,0 +1,25 @@
+{% extends "django_messages/base.html" %} 
+{% block content %} 
+<h2>Sent Messages</h2>
+{% if message_list %} 
+<table class="messages">
+    <thead>
+        <tr><th>Recipient</th><th>Subject</th><th>Sent</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+{% for message in message_list %} 
+    <tr>
+        <td>{{ message.recipient }}</td>
+        <td>
+        <a href="{{ message.get_absolute_url }}">{{ message.subject }}{% if message.is_unread %} *{% endif %}</a>
+        </td>
+        <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
+        <td><a href="{% url messages_delete message.id %}?next={% url messages_outbox %}">delete</a></td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No messages.</p>
+{% endif %}   
+{% endblock %}

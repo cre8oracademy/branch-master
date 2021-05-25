@@ -1,0 +1,21 @@
+{% extends "django_messages/base.html" %}  
+{% load i18n %} 
+{% block content %}
+<h2>View Message</h2>
+<dl class="message-headers">
+    <dt>Subject</dt>
+    <dd><strong>{{ message.subject }}</strong></dd>
+    <dt>Sender</dt>
+    <dd>{{ message.sender }}</dd>
+    <dt>Date </dt>
+    <dd>{{ message.sent_at|date:_("DATETIME_FORMAT")}}</dd>
+    <dt>Recipient</dt>
+    <dd>{{ message.recipient }}</dd>
+</dl>
+{{ message.body|linebreaksbr }}<br /><br />
+
+{% ifequal message.recipient.pk user.pk %}
+<a href="{% url messages_reply message.id %}">Reply</a>
+{% endifequal %}
+<a href="{% url messages_delete message.id %}">Delete</a>
+{% endblock %}

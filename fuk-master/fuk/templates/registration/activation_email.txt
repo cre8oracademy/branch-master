@@ -1,0 +1,9 @@
+Hi there, 
+
+Thanks for signing up for an account at fuk.co.uk. To activate your new account and confirm your email address, please click the link below:
+
+http://{{ site.domain}}/accounts/activate/{{ activation_key }}
+
+Enjoy!
+
+The fuk.co.uk team.

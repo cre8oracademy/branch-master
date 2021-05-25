@@ -1,0 +1,42 @@
+{% extends 'umessages/base_message.html' %}
+{% load i18n %}
+{% load sb_tags %}
+{% block title %}Conversation with {{ recipient }}{% endblock %}
+
+{% block content %}
+{% load sb_tags %}
+<h3>Conversation with <a href="{% url fprofiles_profile_detail recip_id %}">{{ recipient }}</a></h3>
+{% comment %}
+If the message recipient is now blocked, remove the message form,
+but preserve the old conversation.
+{% endcomment %}
+{% if recip_active %}
+<form action="{% url userena_umessages_compose %}" method="POST">
+   {% csrf_token %}
+  <input type="hidden" name="to" value="{{ recipient }}">
+  <textarea name="body" rows="5" cols="80"></textarea>
+  <input type="submit" name="submit" value="Send">
+  </form>
+    {% endif %}
+    
+{% if page_obj.has_next %}
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.infinite-container').waypoint('infinite');
+});
+</script>
+{% endif %}
+<div class="pm-conversation infinite-container">
+{% for message in object_list %}
+<div class="{% if message.sender == request.user %}pm-sent{% else %}pm-recd{% endif %} infinite-item">
+ {% autoescape off %} {{ message.body|pmfilter }} {% endautoescape %}
+  <div class="pm-time">{% if message.sender == request.user %}Sent {% else %}Received {% endif %}{{ message.sent_at|timeago }}</div>
+</div>
+
+{% endfor %}
+<br style="clear:both">
+{% if page_obj.has_next %}
+<a class="infinite-more-link" href="{% url userena_umessages_detail recip_id %}{{ page_obj.next_page_number }}"></a>
+{% endif %}
+</div>
+{% endblock %}

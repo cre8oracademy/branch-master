@@ -1,0 +1,17 @@
+{% load sb_tags %}
+<form action="" method="POST" class="uniForm" id="post_edit">
+{% load crispy_forms_tags %}
+ {{ form|crispy }}
+          {% csrf_token %}
+      <script type="text/javascript" charset="utf-8">
+        $('#id_text').data('smileys', {% list_smileys %});
+      </script>
+ <div class="buttonHolder">
+  <button type="button" class="secondaryAction" onclick="sb.preview()">Preview</button>
+  <button type="submit" class="primaryAction">Post</button></div></form>
+  <div id="post_preview" style="display:none;">
+<p>Post Preview:</p>
+<div id="snap_preview_addpost" class="post_text"> </div>
+</div>
+
+

@@ -1,0 +1,34 @@
+{# This is the user's status block which appears by default in the right sidebar (but could go anywhere.) #}
+<div id="account" class="block"><!--account-->
+{% if user.is_authenticated %}
+{% load sb_tags %}
+<div class="ac_username">{{ user_info.name }}</div>
+ <div class="ac_image">
+ <img src="{{ user_info.avatar_small }}" alt="{{">
+ </div>
+
+<ul class="user-block-menu">
+  <li><a href="{% url userena_umessages_list %}">Inbox {% if user_info.inbox_count %}({{ user_info.inbox_count }}){% endif %}</a></li>
+  <li><a href="{% url fprofiles_profile_detail user.id %}">My profile</a></li>
+
+  {% if perms.snapboard.moderate_posts %}
+  <li><a href="{% url sb_moderation_queue 'p' %}">Moderation {% moderation_count %}</a></li>
+  {% endif %}
+  <li><a href="{% url django.contrib.auth.views.logout %}">Log out</a></li></ul>
+  {% else %}  
+  <div class="account-form">
+   <form method="post" action="{% url django.contrib.auth.views.login %}">
+   
+<label for="id_username"><span>Username:</span><input id="id_username" type="text" name="username" maxlength="30" class="text-input" /></label>
+<label for="id_password"><span>Password:</span><input type="password" name="password" id="id_password" class="text-input" /></label>
+
+
+                {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.get_full_path }}"/>
+              <input type="submit" value=" Sign In " id="login_submit" /> or <a href="{% url registration_register %}">register</a>
+            </form>
+       
+          </div>
+{% endif %}
+   <br style="clear:both">
+</div><!-- close account-->

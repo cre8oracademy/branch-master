@@ -1,0 +1,39 @@
+{% extends "snapboard/base_forum.html" %}
+{% block title %}
+  Posts in moderation
+{% endblock %}
+{% block extra_head %}
+{{ block.super }}
+<script type="text/javascript" charset="utf-8">
+sb.moderate = function(post_id, status) {
+  function update(response) {
+    sid= "#post-"+post_id
+    if (response.updated) {
+       $(sid).slideUp('slow')
+    }
+    else {
+    alert('Post '+post_id+' could not be updated.')
+    }
+  }
+  return sb.post(sb.urls.moderate, {"id": post_id, "status": status}, update)
+}
+</script>
+{% endblock %}
+{% block snapboard_main %}
+  <span style="float:right">{% if status == 'Pending' %}<a href="{% url sb_moderation_queue 'r' %}">Rejected posts</a> 
+  {% endif %}  {% if status == 'Rejected' %}<a href="{% url sb_moderation_queue 'p' %}">Pending posts</a>{% endif %}</span>
+  
+  <h2>Posts in {{ status }} status</h2>
+  <div class="posts">
+    {% if posts %}
+      {% for post in posts  %}
+        <div class="post" id="post-{{ post.id }}">
+          <div class="post_moderation">
+            <div class="post_moderation_controls"><a href="javascript:sb.moderate('{{post.id}}', 'a')"><img src="{{ STATIC_URL }}bank/icons/accept.png" width="16" height="16"></a>{% if status != 'Rejected' %}<a href="javascript:sb.moderate('{{post.id}}', 'r')"><img src="{{ STATIC_URL }}bank/icons/cross.png" width="16" height="16"></a>{% endif %}</div>
+            <h4>Posted in: <a href="{% url sb_thread post.thread.slug %}">{{ post.thread.name }}</a></div>
+          {% include "snapboard/include/post.html" %}</div>
+      {% endfor %}
+      {% else %}<p>There are no posts in {{ status }}.</p>
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,398 @@
+// Stuart mobile additions
+
+/*handheld, only screen and (max-width: 767px)*/
+
+.row, .body, .container {
+width: 100%;
+margin-left: 0px;
+margin-right: 0px;
+padding-left: 0px;
+padding-right: 0px;
+}
+
+.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol, .twelvecol, .maincol, .rightcol {
+width: auto;
+margin-left: 0px;
+margin-right: 0px;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+body.modal-open {
+    overflow: hidden;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+}
+
+body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+div {
+	float: none !important;
+}
+
+/*Global elements*/
+h1 {
+	font-size: 30px;
+}
+h2 {
+	font-size: 24px;
+}
+h3 {
+	font-size: 20px;
+	line-height: 24px;
+}
+h4 {
+	font-size: 17px;
+}
+p {
+	font-size: 16px;
+  &.large {
+    padding-left: 0;
+  }
+}
+ul {
+	font-size: 16px;
+	li {
+		margin: 8px 0;
+    &.large {
+      margin-left: 20px !important;
+    }
+	}
+}
+
+img {
+  float: none !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+/* Ads */
+
+.adsbygoogle:not(:last-child){
+  display: none !important;
+}
+
+/*Header*/
+#hamburger {
+	background: url("../img/hamburger.png") no-repeat;
+	background-size:contain;
+	height: 41px;
+	position: absolute;
+	right: 20px;
+	top: 40px;
+	width: 41px;
+}
+#navbar {
+	bottom: 0;
+	display: none;
+	font-size: 1.5em;
+	left: 0;
+	opacity: 1;
+	padding: 20px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 90%;
+	z-index: 1000;
+	#close {
+		background: url("../img/close.png") no-repeat;
+		background-size:contain;
+		height: 40px;
+		position: absolute;
+		right: 20px;
+		top: 35px;
+		width: 40px;
+	}
+	ul {
+		margin-top: 30px;
+	  li {
+	  	display: block;
+	  	float: none;
+      margin-bottom: 0;
+      margin-top: 0;
+	  	width: 100%;
+	    a {
+				span {
+		    	display: block;
+		    	margin: 5px 0;
+				}
+				br {
+					display: none;
+				}
+	    }
+	  }
+	}
+}
+
+.search-menubar {
+	float: none;
+	left: 18px;
+	position: relative;
+	top: 0;
+	width: 90%;
+  .gsc-input-box {
+    height: 3em;
+  }
+  .gsc-search-button input {
+    margin-top: 3px;
+    padding: 13px 27px;
+  }
+  #gs_tti50 input {
+    margin: 5px 0 !important;
+  }
+}
+
+/* Main content */
+.maincol {
+	box-shadow: none;
+}
+
+/* Home */
+.homepage_text {
+  padding: 1.2em 0.5em 0.5em 0.5em;
+}
+
+/*Right-hand columns*/
+.rightcol {
+  .block {
+		&#account {
+			background: white;
+			padding: 10px;
+			-webkit-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.15);
+			-moz-box-shadow:    1px 1px 3px 0px rgba(50, 50, 50, 0.15);
+			box-shadow:         1px 1px 3px 0px rgba(50, 50, 50, 0.15);
+      .user-block-menu {
+        height: auto;
+        li {
+          font-size: 1.3em;
+        }
+      }
+		}
+	}
+}
+
+/*Forums*/
+.thread {
+	padding: 10px;
+  h4 {
+  	width: 100%;
+  }
+  p {
+  	float: none;
+  }
+}
+
+ul.subnav {
+  height: auto;
+  margin-bottom: 10px;
+  li {
+    display: inline-block;
+    float: none;
+    margin: 0 0 10px 0;
+  }
+}
+
+.category_listing {
+  margin-top: 20px;
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.tabs {
+	background: white;
+	padding: 10px;
+	width: auto;
+	-webkit-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.15);
+	-moz-box-shadow:    1px 1px 3px 0px rgba(50, 50, 50, 0.15);
+	box-shadow:         1px 1px 3px 0px rgba(50, 50, 50, 0.15);
+  ul.tabNavigation li a {
+    font-size: 13px;
+  }
+}
+
+/* Shopping lsiting */
+.competition, .competition_listing, .shopping_listing {
+  img {
+    float: none !important;
+    margin: 0 auto 15px auto !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/*Forms*/
+.account-form, #contact, .uniForm {
+	font-size: 15px;
+  margin: 0;
+  .ctrlHolder {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+	label {
+		font-size: 14px;
+		margin: 5px 0;
+	}
+	input, select {
+    box-sizing:border-box !important;
+		display: block !important;
+    font-size: initial !important;
+		height: 30px !important;
+	}
+  input {
+    width: 100% !important;
+    &[type=submit] {
+      background-color: #E4E4E4;
+      border: 1px solid #d0d0d0;
+      color: #bd0000;
+			font-size: 15px;
+      -webkit-appearance:none;
+		}
+    &[type=text],&[type=password] {
+      padding: 0 5px !important;
+    }
+  }
+  select {
+    width: 100%;
+  }
+  textarea {
+    width: 98% !important;
+  }
+  #recaptcha_area {
+    width: 90% !important;
+  }
+}
+form {
+  input {
+    &[type=text] {
+      width: 100% !important;
+    }
+    &[type=submit] {
+      background-color: #E4E4E4;
+      border: 1px solid #d0d0d0;
+      color: #bd0000;
+			font-size: 15px;
+      -webkit-appearance:none;
+      display: block !important;
+      font-size: initial !important;
+  		height: 30px !important;
+		}
+  }
+  textarea {
+    width: 98% !important;
+  }
+}
+
+/* Pagination */
+.pagination {
+	font-size: 12px;
+	span {
+		&.prev {
+			display: inline-block;
+		}
+		&.page {
+			&:nth-child(n+4):nth-child(n+5) {
+				display: none;
+			}
+		}
+		&.next-na {
+			display: inline-block;
+			padding-bottom: 0px;
+			padding-top: 0px;
+		}
+	}
+}
+
+/* Forum post */
+.post {
+	margin-bottom: 15px !important;
+	.author-info {
+    margin: 0 !important;
+		width: 100% !important;
+    // Jimmy Hill
+		a {
+			float: right !important;
+      width: 75%;
+      img {
+  			height: 20px !important;
+  			width: 20px !important;
+      }
+		}
+    // Profile name
+    .author {
+      float: right !important;
+      margin-top: 15px;
+      width: 75%;
+      a {
+        width: 100%;
+      }
+    }
+    // Profile photo
+		img {
+			float: left !important;
+			margin-right: 5% !important;
+			width: 20% !important;
+		}
+    // Post numbers
+		.author-history {
+			float: left !important;
+      margin-bottom: 2px;
+			width: 75%;
+		}
+	}
+	.post-body {
+		margin-left: 0 !important;
+    position: relative;
+    .post-links {
+      position: absolute !important;
+      right: 0 !important;
+      top: 0 !important;
+      width: 8%;
+    }
+    // e.g. 3 months ago
+    .post-time {
+      clear: both !important;
+      float: left !important;
+      margin: 10px 0 !important;
+    }
+		.post-text {
+      clear: both !important;
+			font-size: 15px !important;
+      margin-top: 20px;
+			.quote-msg {
+				margin: 0 !important;
+			}
+      iframe, embed, object {
+        margin: 15px 0;
+      	max-width:100%;
+      	height:auto;
+      }
+      img:not(.smiley) {
+        margin: 15px 0;
+      }
+		}
+	}
+}
+
+/*Footer*/
+#footer {
+	margin: 20px 0;
+	ul {
+		margin-left: 0;
+	}
+}
+
+#copyright {
+	text-align: left;
+}
+
+/* hide things we don't need */
+#greeting {
+  display:none;
+}

@@ -1,0 +1,73 @@
+{% extends 'umessages/base_message.html' %}
+{% block title %}
+  Compose new message
+{% endblock title %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/custom-theme/jquery-ui-1.10.2.custom.css">
+<script src="{{ STATIC_URL }}js/jquery-ui-1.10.2.custom.min.js"></script>
+<script>
+$(function() {
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+
+    $( "#id_to" )
+      // don't navigate away from the field on tab when selecting an item
+      .bind( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).data( "autocomplete" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        source: function( request, response ) {
+          $.getJSON( "{% url userena_user_autocomplete %}", {
+            term: extractLast( request.term )
+          }, response );
+        },
+        search: function() {
+          // custom minLength
+          var term = extractLast( this.value );
+          if ( term.length < 2 ) {
+            return false;
+          }
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      }).blur(function() {
+          // removed trailing comma space
+          this.value = this.value.replace(/, $/, '')
+        })
+  });
+</script>
+{% endblock %}
+{% block content_title %}<h2>Compose</h2>{% endblock %}
+
+{% block content %}
+<form action="{% url userena_umessages_compose %}" method="post" id="message_compose_form" class="uniForm">
+  {% csrf_token %}
+  <fieldset>
+    <legend>Compose Message</legend>
+    {{ form|crispy }}
+  </fieldset>
+  <input type="submit" name="send" value="{% trans "Send" %}" />
+</form>
+{% endblock %}

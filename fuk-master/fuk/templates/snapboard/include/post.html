@@ -1,0 +1,26 @@
+{% load sb_tags %}
+{# We do the post include inside the <div class=post>, because this needs the cycle value which is not inherited with each include #}
+<div class="author-info">
+    <span class="author">{% profile_link post.user_id %} </span><br>
+      <img src="{{ post.user_info.avatar_standard}}" alt="{{ post.user_info.name }} avatar">
+   {% if post.user_info %} <p class="author-history">{{ post.user_info.postcount }} posts since {{ post.user_info.joined|date:"j/n/y"}}</p>
+   {% if post.user_info.is_elite %}
+     <a href="{% url fuk_subscription %}">{{ post.user_info.badge }}</a>
+   {% else %}
+    {{ post.user_info.badge }} 
+    {% endif %}
+{% endif %}
+  </div>
+  <div class="post-body">
+    <a name="post{{ post.id }}"></a>
+    <div style="float:right" class="post-links">{% if can_post %}<a href="javascript:sb.quote('{{ post.id }}')"  title="Quote"><img src="{{ STATIC_URL }}bank/icons/quote.png" width="16" height="16" alt="quote"></a>{% endif %} {% if user.id == post.user_id and perms.snapboard.post_unmoderated or user.is_staff %}
+      <a href="{% url sb_edit_post post.id %}" title="Edit"><img src="{{ STATIC_URL }}bank/icons/edit_post.png" width="16" height="16"></a>
+    {% endif %}
+    {% if user.id != post.user_id and perms.snapboard.moderate_posts and post.status not in "pr" %}
+    <a href="javascript:sb.flag('{{ post.id }}')" title="Flag"><img src="{{ STATIC_URL }}bank/icons/flag_red.png"></a>{% endif %}</div>
+    <span class="post-time">{% ifnotequal post.date post.edited %}posted {% endifnotequal %}<abbr class="timeago" title="{{ post.date|date:"Y-m-d\TH:i:s\Z" }}">{{ post.date|date:"j M Y H:i" }}</abbr>{% ifnotequal post.date post.edited %}, edited <abbr class="timeago" title="{{ post.edited|date:"Y-m-d\TH:i:s\Z" }}">{{ post.date|date:"j M Y H:i" }}</abbr>{% endifnotequal %}</span><br />
+    <div class="post-text">
+                {{ post.text|postfilter:post.id }} 
+    </div>
+
+  </div>

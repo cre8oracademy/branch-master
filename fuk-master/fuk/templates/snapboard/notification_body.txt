@@ -1,0 +1,13 @@
+Hi, 
+
+The following thread{{ threads|pluralize}} on fuk.co.uk ha{{ threads|pluralize:"s,ve"}} been updated since you last read {{ threads|pluralize:"it,them"}}:
+
+{% for thread in threads %}
+{{ thread.name }}
+{{ current_site }}{{ thread.url }}
+{% endfor %}
+
+You are receiving these emails because you are subscribed to {{ ntype }} notifications from fuk.co.uk.
+
+You can change your settings by editing your profile page here: http://www.fuk.co.uk/profile/edit
+

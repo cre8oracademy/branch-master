@@ -1,0 +1,40 @@
+﻿{% extends "base.html" %}
+
+{% block title %}
+	Subscribe to the fuk.co.uk Elite
+{% endblock title %}
+{% block content %}
+
+<h2>ELITE MEMBERSHIP</h2>
+
+<img src="/static/bank/jimmy_gold_elite.jpg" alt="" style="padding: 10px; float: right;" />
+
+<p class="large">The Elite are the solid gold, beating heart of the fuk community. In exchange for a modest annual subscription, you can join them and benefit from a load of privileges which currently include:</p>
+
+<p class="large">
+- Classifieds. Being able to list stuff for sale in the <a href="/classifieds">classifieds section</a> of our forum.<br>
+- Access to the GJ only section of the site, where all sorts of knowledge is dropped on bargains, sales and discount codes.
+<br />
+- Blags. Exclusive competitions and treats, whenever we have them available.</p>
+
+<p class="large">You also get a little GJ tag,  <img src="/static/bank/jimmy_av.gif" align="absmiddle" />, alongside your avatar to show the world you're special.</p>
+
+<p class="large">The 'Jimmy' reference is to Jimmy Hill. (Explanation <a href="/threads/fuk_mannerisms/8/">here</a>).</p>
+
+<p class="large">NB. Rules are the same for the elite as for regular users - <a href="/help">check in the help section here</a>. You can still be banned and your subscription payment will not be refunded.
+</p>
+
+
+<h2>Join here</h2>
+<p class="large">Elite membership costs £20 and is on an annual recurring basis. We use PayPal to process payments, but you don't need a PayPal account to subscribe.</p>
+{% if form %}
+<p class="large">To purchase an elite subscription for the username <b>{{ user.username }}</b>, click the Subscribe button. Your account will be upgraded within 24 hours.</p>
+
+{{ form }}  
+{% else %}
+<p class="large">If you already have a fuk.co.uk account, please log in using the form on the right hand side of the page. Otherwise you <a href="/accounts/register">register for one right now</a>, then follow the instructions on the registration pages to upgrade.</p>
+</p>  
+{% endif %}
+<br />
+
+{% endblock content %}

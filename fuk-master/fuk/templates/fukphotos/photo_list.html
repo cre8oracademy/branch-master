@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{# This template is used for list-style views of photos. Template title is passed in from the url conf. #}
+{% block title %}{{ list_title }}{% endblock %}
+{% block sub-nav %}
+  <ul class="subnav">
+    <li><a href="{% url photo_recent 1 %} ">All photos</a></li> 
+    {% if perms.fukphotos.add_photo %} 
+    <li><a href="{% url photo_user user.id 1 %} ">My photos</a></li> 
+    <li><a href="{% url photo_add %} ">Add photo</a></li>      
+    {% endif %}
+  </ul>
+{% endblock %}
+{% block content %}
+<h2>{{ list_title }}</h2>
+<ul class="photo-list">
+{% load thumbnail %}
+{% for photo in object_list %}
+<li>
+  <a href="{% url photo_detail photo.slug %}"><img src="{% thumbnail photo.original_image 220x220 crop %}" alt="{{ photo.title }}" title="{{ photo.title }}"></a>
+</li>{% empty %}
+<p>{{ emptytext }}
+  {% endfor %}
+  </ul>
+{% endblock %}
+   <div class="pagination">
+ <span class="step-links">
+      {% if object_list.has_previous %}
+          <span class="prev"><a href="?page={{ object_list.previous_page_number }}">&laquo; Previous</a></span>
+      {% endif %}
+
+      <span>
+          Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}
+      </span>
+
+      {% if object_list.has_next %}
+          <span class="next"><a href="?page={{ object_list.next_page_number }}">Next  &raquo;</a></span>
+      {% endif %}
+  </span>
+</div>

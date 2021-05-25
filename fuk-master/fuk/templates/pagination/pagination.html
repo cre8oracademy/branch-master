@@ -1,0 +1,26 @@
+{% if is_paginated %}
+{% load i18n %}
+<div class="pagination">
+    {% if page_obj.has_previous %}
+       <span class="prev"><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}{{ hashtag }}">&lsaquo;&lsaquo; {% trans "previous" %}</a></span>
+    {% else %}
+        <span class="prev-na">&lsaquo;&lsaquo; {% trans "previous" %}</span>
+    {% endif %}
+    {% for page in pages %}
+        {% if page %}
+            {% ifequal page page_obj.number %}
+                <span class="curr">{{ page }}</span>
+            {% else %}
+                <span class="page"><a href="?page={{ page }}{{ getvars }}{{ hashtag }}">{{ page }}</a></span>
+            {% endifequal %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <span class="next"><a href="?page={{ page_obj.next_page_number }}{{ getvars }}{{ hashtag }}">{% trans "next" %} &rsaquo;&rsaquo;</a></span>
+    {% else %}
+        <span class="next-na">{% trans "next" %} &rsaquo;&rsaquo;</span>
+    {% endif %}
+</div>
+{% endif %}

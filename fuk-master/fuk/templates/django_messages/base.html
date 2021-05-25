@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+  Private messages
+{% endblock %}
+{% block sub-nav %}
+  <ul class="subnav">
+      <li><a href="{% url messages_inbox %} ">Inbox</a></li>
+      <li><a href="{% url messages_outbox %} ">Sent Messages</a></li>
+      <li><a href="{% url messages_compose %} ">New Message</a></li>
+      <li><a href="{% url messages_trash %} ">Trash</a></li>
+  </ul>
+{% endblock %}
+{% block content %}  
+{% endblock %}

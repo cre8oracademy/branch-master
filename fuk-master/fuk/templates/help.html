@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}
+  Help
+{% endblock %}
+{% block content %}
+<h2>Help</h2>
+
+<h2>Registration</h2>
+
+<p class="large">To be able to enjoy all of the features available to the community, you will need to sign up for a member account. Registration is free, easy and only takes a moment to complete. </p>
+
+<p class="large"><a href="{% url registration_register %}">Register Now</a></p>
+ 
+<p class="large">You will then have to verify your email address by clicking a link in an email that we will send you. You will receive a confirmation of your membership as an email.</p>
+
+<p class="large">Becoming a member allows you to post to the threads, create new threads and enter competitions.</p>
+
+<p class="large"><b>New members' limitations. This isn't some sort of initiation, it's just to deter and avoid spam, so please be patient while your early posts are moderated before being published.</b></p>
+
+
+
+<h2>Elite Membership.</h2>
+
+<p class="large">Regular members often end up contributing to the site by upgrading their account to GJ status, which is an elite membership with many advantages:</p>
+
+<p class="large"><ul style="list-style-type: circle; padding-left: 12px;"><li class="large"> Selling in the Classifieds forum.</li>
+<li class="large"> Access to the GJ only section of the site, where all sorts of knowledge is dropped on bargains, sales and discount codes.</li>
+<li class="large"> Exclusive competitions and give-aways.</li>
+</ul>
+</p>
+
+<p class="large"><a href="{% url fuk_subscription %}">Find out more and upgrade here.</a></p>
+
+
+
+<h2>Posting guidelines</h2>
+
+<p class="large">Please use the SEARCH (found at the top right of every page) before posting a brand new thread - there are thousands of threads here and there really isn't much that hasn't been addressed before.</p>
+
+<p class="large">Best advice is to read a few of the really popular threads (linked in every page on the right-hand part of the site).</p>
+
+<p class="large">Help keep fuk.co.uk a happy community and please follow the guidelines below when using the site.</p>
+
+<p class="large">Take time to see how things work here before you wade in. The following will not be tolerated: racism, violent or pornographic imagery (or links to same), and spam. Users can be banned at the discretion of the management.</p>
+
+<p class="large">Please note that if you do not follow the guidelines, especially in respect of posting spam, you will be banned and your details added to the <a href="http://www.stopforumspam.com/" target="_blank">stop forum spam</a> database, which is like getting a bad credit rating that prevents you from joining and posting on other forums.</p>
+
+<p class="large">And remember, what you post here is your responsibility, IPs can be checked. fuk.co.uk hold no responsibility for what is posted here.</p>
+
+<p class="large">If you're having any problems using the site, please PM (private message) a moderator or administrator, identifiable by their little badges: <img src="/static/bank/mod_av.gif" align="absmiddle" /> and <img src="/static/bank/admin_av.gif" align="absmiddle" />. All fuk.co.uk staff are listed <a href="/about">here</a>.</p>
+
+<p class="large">To contact the fuk.co.uk management, please go to the <a href="/contact">Contact page</a>.</p>
+
+
+
+<h2>Spam and commercial posts.</h2>
+
+<p class="large">In general, it's a matter for our discretion whether a post or thread is unsolicited spam. If something is of genuine interest to our members, we usually allow it. If you are looking to promote your company, please send us an <a href="/advertise">advertising enquiry here</a>.</p>
+
+{% endblock %}

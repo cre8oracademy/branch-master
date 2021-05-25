@@ -1,0 +1,36 @@
+{% extends 'umessages/base_message.html' %}
+{% load i18n umessages_tags %}
+{% block title %}Private messages{% endblock %}
+
+{% block content %}
+<p class="pm-unread">{{ unread_message_count }} new message{{ unread_message_count|pluralize}}.</p>
+
+<table class="pm-message-list">
+  {% for message in object_list %}
+  <tr class="{% cycle 'odd' 'even' %}">
+    {% if message.from_user == user %}
+  <td class="pm-user-list">{% if message.unreads > 0 %}<strong>{% endif %}<a href="{% url userena_umessages_detail message.to_user.id %}">{{ message.to_user }}</a>{% if message.unreads > 0 %}</strong>{% endif %}</td>      
+  {% else %}
+  <td class="pm-user-list">{% if message.unreads > 0 %}<strong>{% endif %}<a href="{% url userena_umessages_detail message.from_user.id %}">{{ message.from_user }}</a>{% if message.unreads > 0 %}</strong>{% endif %}</td>
+  {% endif %}
+  <td class="pm-list-message">{% if message.unreads > 0 %}<strong>{% endif %}{{ message.latest_message }}{% if message.unreads > 0 %}</strong>{% endif %}</td><td class="pm-unread-count">{{ message.unreads }} new</td>
+  </tr>
+  {% endfor %}
+</table>    
+{% if is_paginated %}
+<div class="pagination">
+ <span class="step-links">
+      {% if page_obj.has_previous %}
+          <span class="prev"><a href="{% url userena_umessages_list page_obj.previous_page_number %}">&laquo; Previous</a></span>
+      {% endif %}
+
+      <span>
+          Page {{ page_obj.number }} of {{ paginator.num_pages }}
+      </span>
+
+      {% if page_obj.has_next %}
+          <span class="next"><a href="{% url userena_umessages_list page_obj.next_page_number %}">Next  &raquo;</a></span>
+      {% endif %}
+  </span>
+</div>{% endif %}
+{% endblock %}

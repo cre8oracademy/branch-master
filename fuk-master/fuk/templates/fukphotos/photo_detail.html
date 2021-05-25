@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}{{ photo.title }}{% endblock %}
+{% block extra_head %}
+<script type="text/javascript">
+$(document).ready(function() {
+  $("abbr.timeago").timeago();
+  // jquery rollover technique from http://www.selfcontained.us/2008/03/08/simple-jquery-image-rollover-script/
+  $('img[data-hover]').hover(function() {
+        $(this).attr('tmp', $(this).attr('src')).attr('src', $(this).attr('data-hover')).attr('data-hover', $(this).attr('tmp')).removeAttr('tmp');
+    }).each(function() {
+        $('<img />').attr('src', $(this).attr('data-hover'));
+    });
+});
+</script>
+{% endblock %}
+{% block sub-nav %}
+  <ul class="subnav">
+    <li><a href="{% url photo_recent 1 %} ">All photos</a></li> 
+    {% if user.is_authenticated %} 
+    <li><a href="{% url photo_user user.id 1 %} ">My photos</a></li> 
+    <li><a href="{% url photo_add %} ">Add photo</a></li>      
+    {% endif %}
+  </ul>
+{% endblock %}
+{% block content %}
+{% load thumbnail %}
+<h2>{{ photo.title }}</h2>
+  <div class="photo-display">
+  <img src="{% thumbnail photo.original_image 798x0 %}">
+  </div>
+  <div class="photo-info">
+    {% if request.user.id == photo.user.id %}
+      <p class="photo-actions"><a href="{% url photo_edit photo.slug %}" title="Edit photo"><img src="{{ STATIC_URL }}bank/icons/pen_grey.png" data-hover="{{ STATIC_URL }}bank/icons/pen_red.png"></a><a href="{% url photo_delete photo.slug %}" title="Delete photo"><img src="{{ STATIC_URL }}bank/icons/x_grey.png"  data-hover="{{ STATIC_URL }}bank/icons/x_red.png"></a></p>
+    {% endif %}
+    <p class="photo-description">{{ photo.description }}</p>
+    <div class="photo-tags">
+      <h5>Tags</h5>
+      {% for tag in photo.get_tag_list  %}
+        <a href="{% url photo_tag tag.slug 1 %}">{{ tag }}</a>, 
+    
+    {% endfor %}      </div>
+    
+    </div>
+    
+  <br style="clear:both" />
+  {% load comments %}
+  {% render_comment_list for photo %}
+  {% get_comment_form for photo as form %}
+  <form action="{% comment_form_target %}" method="post">
+    {% csrf_token %}
+   <input type="hidden" name="next" value="{{ photo.get_absolute_url }}" />
+    {% for field in form %}
+      {% if field.is_hidden %}
+        {{ field }}
+      {% else %}
+        {% if field.errors %}{{ field.errors }}{% endif %}
+        <p
+          {% if field.errors %} class="error"{% endif %}
+          {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+          {{ field.label_tag }} {{ field }}
+        </p>
+      {% endif %}
+    {% endfor %}
+    <p class="submit">
+      <input type="submit" name="post" class="submit-post" value="Post comment" />
+    </p>
+  </form>
+{% endblock %}

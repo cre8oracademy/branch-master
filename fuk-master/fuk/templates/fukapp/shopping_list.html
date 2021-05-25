@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+  Shopping - deals, discounts, drops
+{% endblock %}
+{% block content %}
+<h2>Shopping - deals, discounts, drops</h2>
+  {% for object in object_list %}
+    {% if object.published or user.is_staff %}
+    <div class="shopping_listing {% cycle 'odd' 'even' %}{% if object.restricted %} gj_only{% endif %}">
+    {% if object.title %}
+      <h3>{{ object.title}}</h3>
+    {% endif %}
+    {% if object.restricted %}
+    <div class="upgrade">You need to be an elite member of fuk.co.uk to access this offer. Upgrade now!</div>
+    {% endif %}
+    {{ object.content|safe }}
+      </div>
+      {% endif %}
+  {% endfor %}
+{% endblock %}

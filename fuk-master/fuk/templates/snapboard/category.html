@@ -1,0 +1,16 @@
+{% extends "snapboard/base_forum.html" %}
+{% load pagination_tags %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block snapboard_main %}
+    <div class="index_title">
+    <h2>{{ title }}</h2>
+        {% autopaginate threads 20 %}
+        {% paginate %}
+    </div>
+ {% include "snapboard/include/show_threads.html" %}
+
+{% paginate %}{# XXX It's inefficient calling that twice for the same result #}
+{% endblock %}
+
+  

@@ -1,0 +1,25 @@
+{% extends "snapboard/base_forum.html" %}
+{% load pagination_tags %}
+
+
+{% block snapboard_main %}
+    <div class="index_title">
+    <h2 style="font-size: 152%;">
+    {{ title }}
+    </h2>
+        {% autopaginate threads %}
+        {% paginate %}
+    </div>
+
+    {% if threads %}
+      {% include "snapboard/include/show_threads.html" %}
+   
+        {% paginate %}{# XXX It's inefficient calling that twice for the same result #}
+
+    {% else %}
+        <p>No threads available.</p>
+    {% endif %}
+{% endblock %}
+<!--
+vim: ai ts=4 sts=4 et sw=4 
+-->

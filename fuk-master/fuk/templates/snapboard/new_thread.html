@@ -1,0 +1,20 @@
+{% extends "snapboard/base_forum.html" %}
+{% block snapboard_main %}
+<h2>Start a new thread</h2>
+    {% if user.is_authenticated %}
+    {% load sb_tags %}
+    {% load crispy_forms_tags %}
+    <form action="{{ request.path }}" method="POST" class="uniForm" id="post_edit">
+        {{ form|crispy }}
+      {% csrf_token %}
+  
+  <script type="text/javascript" charset="utf-8">
+        $('#id_post').data('smileys', {% list_smileys %});
+      </script>
+<div class="buttonHolder"><button type="submit" class="primaryAction">Submit post</button></div>
+
+    </form>
+    {% else %}
+    <p>You must be signed in to start a new thread.</p>
+    {% endif %}
+{% endblock %}

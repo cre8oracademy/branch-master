@@ -1,0 +1,427 @@
+[
+    {
+        "pk": 1, 
+        "model": "auth.group", 
+        "fields": {
+            "name": "Basics", 
+            "permissions": []
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "auth.group", 
+        "fields": {
+            "name": "Goldens", 
+            "permissions": []
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "auth.group", 
+        "fields": {
+            "name": "Newbies", 
+            "permissions": []
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "auth.group", 
+        "fields": {
+            "name": "All", 
+            "permissions": []
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "auth.group", 
+        "fields": {
+            "name": "Mods", 
+            "permissions": []
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 4, 
+            "name": "Menswear", 
+            "post_group": 4, 
+            "slug": "menswear", 
+            "new_thread_group": 1, 
+            "order": 10, 
+            "description": "Everything to do with menswear. Got a quick question? Post in the Random Fashion Questions forum."
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 4, 
+            "name": "Womenswear", 
+            "post_group": 4, 
+            "slug": "womenswear", 
+            "new_thread_group": 1, 
+            "order": 20, 
+            "description": "fuk's legendary fashion discussion now with a female dimension."
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 4, 
+            "name": "Random Fashion Questions", 
+            "post_group": 4, 
+            "slug": "random-fashion-questions", 
+            "new_thread_group": 4, 
+            "order": 30, 
+            "description": "Got a quick question? Ask it here."
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 4, 
+            "name": "General Discussion", 
+            "post_group": 4, 
+            "slug": "general-discussion", 
+            "new_thread_group": 1, 
+            "order": 40, 
+            "description": "Anything you like in here."
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 4, 
+            "name": "Random Questions", 
+            "post_group": 4, 
+            "slug": "random-questions", 
+            "new_thread_group": 4, 
+            "order": 50, 
+            "description": "Ask a random question about anything except fashion."
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 4, 
+            "name": "Classifieds", 
+            "post_group": 2, 
+            "slug": "classifieds", 
+            "new_thread_group": 2, 
+            "order": 60, 
+            "description": "Buy and sell your stuff. Only elite users can post."
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 2, 
+            "name": "The Elite", 
+            "post_group": 2, 
+            "slug": "elite", 
+            "new_thread_group": 2, 
+            "order": 70, 
+            "description": "Private forum for the goldens."
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 4, 
+            "name": "Tech Help", 
+            "post_group": 4, 
+            "slug": "tech-help", 
+            "new_thread_group": 4, 
+            "order": 80, 
+            "description": "Problems using the board? Ask here for help."
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "snapboard.category", 
+        "fields": {
+            "read_group": 4, 
+            "name": "Archive", 
+            "post_group": 5, 
+            "slug": "archive", 
+            "new_thread_group": 5, 
+            "order": 90, 
+            "description": "Where the old threads go."
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Cool", 
+            "default": "8-)", 
+            "pattern": "8-?\\)|:cool:", 
+            "image": "smileys/cool.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Cry", 
+            "default": "", 
+            "pattern": ":cry:", 
+            "image": "smileys/cry.gif", 
+            "is_active": true, 
+            "is_regex": false
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Eek", 
+            "default": "", 
+            "pattern": ":eek:", 
+            "image": "smileys/eek.gif", 
+            "is_active": true, 
+            "is_regex": false
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Evil", 
+            "default": "}:-)", 
+            "pattern": "}:-?\\)|:evil:", 
+            "image": "smileys/evil.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Eye-wink", 
+            "default": ";-)", 
+            "pattern": ";-?\\)|:wink:", 
+            "image": "smileys/wink.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Fascist!", 
+            "default": "", 
+            "pattern": ":hitler:", 
+            "image": "smileys/hitler.gif", 
+            "is_active": true, 
+            "is_regex": false
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Jawdropping!", 
+            "default": "", 
+            "pattern": ":jawdrop:", 
+            "image": "smileys/jawdrop.gif", 
+            "is_active": true, 
+            "is_regex": false
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Jimmy Hill", 
+            "default": "", 
+            "pattern": ":jimmy:", 
+            "image": "smileys/jimmy_av.gif", 
+            "is_active": true, 
+            "is_regex": false
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Jimmy Hill jawdrop", 
+            "default": "", 
+            "pattern": ":jimdrop:", 
+            "image": "smileys/jimdrop.gif", 
+            "is_active": true, 
+            "is_regex": false
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Laughing out loud", 
+            "default": ":D", 
+            "pattern": ":-?D|:lol:", 
+            "image": "smileys/lol.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Oops", 
+            "default": "", 
+            "pattern": ":oops:", 
+            "image": "smileys/redface.gif", 
+            "is_active": true, 
+            "is_regex": false
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Puzzled", 
+            "default": ":-?", 
+            "pattern": ":-?\\?|:puzzled:", 
+            "image": "smileys/confused.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Roll Eyes", 
+            "default": "", 
+            "pattern": ":roll:", 
+            "image": "smileys/rolleyes.gif", 
+            "is_active": true, 
+            "is_regex": false
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Sad", 
+            "default": ":-(", 
+            "pattern": ":-?\\(|:sad:", 
+            "image": "smileys/sad.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Shocked", 
+            "default": ":-O", 
+            "pattern": ":-?O|:shocked:", 
+            "image": "smileys/surprised.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Sick!", 
+            "default": ":sick:", 
+            "pattern": ":sick:|:barf:", 
+            "image": "smileys/barf.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Smiling", 
+            "default": ":-)", 
+            "pattern": ":-?\\)|:smile:", 
+            "image": "smileys/smile.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Sticking out tongue", 
+            "default": ":-P", 
+            "pattern": ":-?P|:tongue:", 
+            "image": "smileys/razz.gif", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "smileys.smiley", 
+        "fields": {
+            "description": "Ubercool", 
+            "default": ":ubercool:", 
+            "pattern": ":ubercool:|:uc:", 
+            "image": "smileys/ubercool.png", 
+            "is_active": true, 
+            "is_regex": true
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "sites.site", 
+        "fields": {
+            "domain": "127.0.0.1:8000", 
+            "name": "nufuk.dev"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "sites.site", 
+        "fields": {
+            "domain": "beta.fuk.co.uk", 
+            "name": "fuk stage"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "sites.site", 
+        "fields": {
+            "domain": "www.fuk.co.uk", 
+            "name": "fuk.co.uk"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "sites.site", 
+        "fields": {
+            "domain": "nufuk.dev:8080", 
+            "name": "fuk.co.uk vagrant"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "sites.site", 
+        "fields": {
+            "domain": "dev.fuk.co.uk", 
+            "name": "fuk.co.uk dev"
+        }
+    }
+]

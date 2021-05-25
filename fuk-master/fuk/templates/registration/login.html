@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+  User Login
+{% endblock %}
+
+{% block content %}
+<h2>Log in to your account</h2>
+    {% if not user.is_authenticated %}
+    <div>{% load crispy_forms_tags %}
+        <form method="post" action="{% url auth_login %}" class="uniForm">        
+          {% if form.non_field_errors %}
+    <div id="errorMsg">
+        {% if form_error_title %}<h3>{{ form_error_title }}</h3>{% endif %}
+        <ol>
+            {{ form.non_field_errors|unordered_list }}
+        </ol>
+    </div>
+{% endif %}
+        <div id="div_id_username" class="ctrlHolder">
+            <label for="id_username" class="requiredField">
+                Username  
+            </label>
+          <input id="id_username" type="text" class="textInput textinput" name="username" maxlength="30" value="{{ form.username.value|default:"" }}" tabindex="1">
+        </div>
+          <div id="div_id_password" class="ctrlHolder">
+            <label for="id_password" class="requiredField">
+                Password <span style="font-size:.75em;">(<a href="{% url auth_password_reset %}">Forgotten it?</a>)</span>
+            </label>
+          <input id="id_password" type="password" class="textInput textinput" name="password" tabindex="2">
+        </div>
+              {% csrf_token %} 
+              <input type="hidden" name="next" value="{{ next }}">
+            <input type="submit" value=" Sign In " tabindex="3"> or <a href="{% url registration_register %}">register</a> 
+        </form>
+    </div>
+    {% else %}
+    <p>You are already signed in.</p>
+    {% endif %}
+{% endblock %}

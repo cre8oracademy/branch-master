@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+  You have subscribed to the fuk.co.uk Elite!
+{% endblock title %}
+{% block content %}
+
+<h2>Congratulations!</h2>
+
+<p>You are now a fully paid up member of the best fashion forum on the web. You can post and respond to items in the <a href="{% url sb_category 'classifieds' %}">Classifieds</a> and <a href="{% url sb_category 'elite' %}">Elite</a> forums, as get access to exclusive deals and drops in the <a href="{% url shopping_listing %}">Shopping</a> section.</p>
+
+<p class="large">Thanks for joining and have fun!</p>
+{% endblock %}

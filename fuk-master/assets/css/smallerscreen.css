@@ -1,0 +1,82 @@
+/*only screen and (max-width: 1023px)*/
+
+body {
+font-size: 0.8em; /* Makes type a bit smaller at 1024 so layout doesn't look unbalanced */
+line-height: 1.5em;	/* As above */
+}
+
+.search-menubar {
+  margin-bottom: 0.8em;
+  margin-top: 1em;
+  width: 54%;
+}
+
+.maincol {
+  margin-left: 2%;
+  width: 70%;
+}
+
+.rightcol {
+  margin-right: 2%;
+  width: 24.2%;
+}
+
+#footer {
+  width: 96%;
+}
+
+#footer ul {
+  margin-left: 0;
+}
+
+/* Changes by Stuart */
+
+/* Home */
+.homepage_text {
+  padding: 1.2em 0.5em 0.5em 0.5em;
+}
+#main .ad {
+  margin-top: 1.5em;
+}
+
+/* Forum Pagination */
+.pagination {
+	font-size: 12px;
+}
+
+.pagination span.prev {
+  display: inline-block;
+}
+
+.pagination span.page:nth-child(n+4):nth-child(n+8) {
+  display: none;
+}
+
+.pagination span.next-na {
+  display: inline-block;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+/* Posts */
+.post div.author-info {
+  width: 17%;
+}
+
+/* Shopping */
+.shopping_listing img {
+  float: none;
+  height: auto;
+  margin-bottom: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+/* smaller text for navigation tabs */
+
+ul.tabNavigation li a {
+    font-size: 0.7em;
+}

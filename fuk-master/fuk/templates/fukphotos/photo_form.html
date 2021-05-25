@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{% if editing %}Edit
+{% else %}Upload a
+{% endif %} picture{% endblock %}
+
+{% block content %}
+<h2>{% if editing %}Edit
+{% else %}Upload a
+{% endif %} picture</h2>
+<div id="photo-upload-form">
+    {% load crispy_forms_tags %}
+    
+  <form enctype="multipart/form-data" action="" method="POST" class="uniForm">
+       <fieldset class="inlineLabels"> 
+  {{form|crispy}}
+  {% csrf_token %} 
+    <div class="buttonHolder"><button type="submit" class="primaryAction">{% if editing %}Edit{% else %}Add{% endif %} photo</button></div>
+</fieldset>
+    </form>
+</div>
+{% endblock %}

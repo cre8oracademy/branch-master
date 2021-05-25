@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <title>fuk.co.uk | {% block title %}{% endblock %}</title>
+  <link rel="shortcut icon" href="{{ STATIC_URL }}bank/favicon.ico" type="image/x-icon" />
+
+    <!-- The 1140px Grid -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/1140.css" type="text/css" media="screen" />
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/ie.css" type="text/css" media="screen" />
+    <![endif]-->
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/layout.css?v" type="text/css" media="screen" />
+
+    <!-- Make minor type adjustments for 1024 monitors -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/smallerscreen.css" media="only screen and (max-width: 1023px)" />
+    <!-- Resets grid for mobile -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/mobile.css" media="handheld, only screen and (max-width: 767px)" />
+    <style type="text/css">
+         .righthandMPU { display:inline-block;  }
+          @media (max-width: 769px) { 
+              .righthandMPU { display: none; } 
+          }
+    </style>
+
+    
+    
+    <!-- main layout -->
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}uni_form/uni-form.jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/common.js"></script>
+
+
+  <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.timeago.js"></script>
+  {% if user.is_authenticated %}
+    <script> var noskimwords = 'true'; </script>
+  {% endif %}
+  {% block extra_head %}
+
+  {% endblock %}
+    <script data-ad-client="ca-pub-7391922096462540" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </head>
+<body class="{% block bodyclasses %}{% endblock bodyclasses %}">
+  <div id="container"><!-- Container -->
+    <div id="header" class="row"><!-- Header -->
+      <!-- logo -->
+      <a href="/"><img id="logo" src="{{ STATIC_URL }}bank/fuk_logo.png" alt="fuk.co.uk logo" title="home" /></a>
+            <!-- close logo -->
+      {% block main_navigation %}
+      <div id="hamburger"></div>
+      <div id="navbar" class="row">
+        <div id="close"></div>
+        <ul>
+          <li><a href="/threads/" title="Forum"><span class="navheading">Forum</span><br>The legendary Threads</a></li>
+          <li><a href="/threads/forums/classifieds/" title="Shopping"><span class="navheading">Classifieds</span><br>Bag yourself a bargain</a></li>
+          <li><a href="/competitions/" title="Competitions"><span class="navheading">Competitions</span><br>Win big with fuk.co.uk</a></li>
+          <li><a href="/shopping/" title="Shopping"><span class="navheading">Shopping</span><br>Deals, discounts & drops</a></li>
+        </ul>
+        <div class="search-menubar">
+          <div class="gcse-searchbox-only" data-resultsUrl="/search/results/"></div>
+          {# <gcse:searchbox-only resultsUrl=></gcse:searchbox-only> #}
+        </div>
+      </div><!-- / -->   
+      {% endblock %}
+    </div><!-- close header-->
+    <div class="row"><!-- content-->
+      <div class="maincol">
+        <div id="main">
+          {% load sb_tags %}
+          {% block messages %}
+            {% if messages %}
+            <div class="messagelist">
+              <ul>{% for msg in messages %}<li>{{ msg }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
+          {% endblock %}
+          {% block sub-nav %}{% endblock %}
+          {% block content %}{% endblock %}
+        </div>
+      </div><!-- close left column-->
+      <div class="rightcol">
+        {% block right_nav %}
+          {% if display_login %}{% include "includes/userblock.html" %}{% endif %}
+        {% endblock %}
+        {% block right_panels %}
+        <div class="block">
+          <div class="tabs">
+            <ul class="tabNavigation">
+              <li><a href="#first">Active</a></li>
+              <li><a href="#second">Classifieds</a></li>
+              <li><a href="#third">Who's Online?</a></li>
+            </ul>
+            <div id="first">
+              <ul class="active-threads">{% active_threads user %}</ul>
+            </div>
+            <div id="second">
+              <ul>{% active_classifieds %}</ul>
+            </div>
+            <div id="third">
+              {% users_online request.online_now_ids request.online_now_users %}
+            </div>
+          </div>
+        </div>
+        {% comment %}
+        <div class="ad-mpu block">
+        <!-- MPU -->
+          <ins class="adsbygoogle righthandMPU"
+            style="display:block"
+            data-ad-client="ca-pub-8891023822500646"
+            data-ad-slot="9291401753"
+            data-ad-format="auto"></ins>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        {% endcomment %}
+        <br />
+        {% endblock %}
+      </div>
+      <div class="row" id="footer">
+        {% block footer %}
+        <div class="threecol">
+          <h4>Forums</h4>
+          <ul>{% category_links user %}</ul><!-- / -->
+        </div>
+        <div class="threecol">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="/competitions/" title="Competitions">Competitions</a></li>
+            <li><a href="/shopping/" title="shopping">Shopping</a></li>
+          </ul><!-- / -->
+        </div>
+        <div class="threecol last"><!-- footer-->
+          <h4>Info</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/advertise/">Advertise</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/help/">Help</a></li>
+            <li><a href="/subscribe/">Subscribe</a></li>
+            <li><a href="/privacy/">Privacy policy</a></li>
+          </ul><!-- / -->
+        </div>
+        {% endblock footer %}
+      </div>
+      {% comment %}
+      <div class="row">
+        <div class="ninecol last">
+          <!-- leaderboard -->
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- Footer responsive -->
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-8891023822500646"
+               data-ad-slot="4721601357"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>    
+      </div>
+      {% endcomment %}
+    </div>
+    <div class="row">
+      <div id="copyright" class="twelvecol">
+        <p class="cr">&copy; 1995-2018 Wide Media.</p>
+      </div><!-- / -->
+    </div><!-- / -->
+  <!-- close footer -->
+  </div><!-- close container -->
+  <script type="text/javascript">
+    {# DEPRECATED var vglnk = {key: '171e4696fd98946283dce566193594ce'}; // For viglink #}
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-266781-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script type="text/javascript" src="//s.skimresources.com/js/3670X619859.skimlinks.js"></script>
+  <!-- google custom search -->
+  <script async src='https://cse.google.com/cse.js?cx=partner-pub-7391922096462540:2543553428'></script>
+  {# <script async type="text/javascript" src="https://cdn.viglink.com/api/vglnk.js"></script> #}
+  <script src="https://app.linklyhq.com/js/linkly.bundle.js" data-id=1655></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% if threads %}
+{% load sb_tags %}
+ <div id="thread-list">
+    {% for thread in threads.object_list|forum_unreads:user %}
+    <div class="thread {% cycle 'odd' 'even' %}">
+    <p>
+      Started by {% profile_link thread.user_id %} {{ thread.created|timeago }}{% if display_cats %}
+        in <a href="{% url sb_category thread.category.slug %}">{{ thread.category }}</a> 
+      {% endif %}<br>
+    {% if thread.post_count > 1 and thread.last_poster.id %}
+      {{ thread.post_count }} replies, latest {{ thread.updated|timeago }} by {% profile_link thread.last_poster.id %}    {% endif %}
+      </p><h4>{% if thread.sticky %}STICKY{% endif %}{% if thread.closed %} CLOSED{% endif %}{% if thread|has_unreads:user %} NEW{% endif %} <a href="{% paged_url thread user %}">{{ thread.name }}</a></h4>
+        </div>
+    {% endfor %}
+  </div>
+{% else %}
+    <p>No threads are available in this category.</p>
+{% endif %}

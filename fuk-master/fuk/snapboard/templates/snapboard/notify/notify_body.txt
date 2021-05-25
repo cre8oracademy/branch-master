@@ -1,0 +1,12 @@
+Hi {{ user.username }},
+
+The following thread you are watching on fuk.co.uk has been updated:
+
+{{ subj }}
+{{ link }}
+
+You are receiving this email because you have requested immmediate notifications to updated threads.
+
+You can change that setting here:
+
+edit_profile_link.

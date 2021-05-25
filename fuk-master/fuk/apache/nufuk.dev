@@ -1,0 +1,21 @@
+<VirtualHost *>
+# what's the deal with DocumentRoot in these wsgi configs? TODO check.
+ServerName nufuk.dev
+
+Alias /media/admin /var/www/fuk/local/fuk-env/lib/python2.6/site-packages/django/contrib/admin/media/
+
+
+Alias /media/ /var/www/fuk/local/media/
+
+<Directory  /var/www/fuk/local/media/>
+Order allow,deny
+Allow from all
+</Directory>
+
+WSGIDaemonProcess nufuk.dev threads=10 maximum-requests=1000 user=vagrant group=vagrant
+WSGIProcessGroup nufuk.dev
+WSGIScriptAlias / /var/www/fuk/local/fuk/apache/local.wsgi
+
+
+
+</VirtualHost>

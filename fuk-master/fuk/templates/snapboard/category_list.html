@@ -1,0 +1,22 @@
+{% extends "snapboard/base_forum.html" %}
+{% load sb_tags %}
+{% block snapboard_main %}
+    <div class="index_title">
+    <h2>Category List</h2>
+    </div>
+    {% if categories %}
+        {% for category in categories %}
+        <div class="category_listing">
+                <h3><a href="{{ category.url }}">{{ category.name }}</a></h3>
+                <p>{{ category.description }}</p>
+                <div class="category_meta">{{ category.count }} topic{{ category.count|pluralize }}. Last post {{ category.updated|timeago }} by {{ category.last_poster }}</div>
+            <br />
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No categories are available</p>
+    {% endif %}
+{% endblock %}
+<!--
+vim: ai ts=4 sts=4 et sw=4 
+-->

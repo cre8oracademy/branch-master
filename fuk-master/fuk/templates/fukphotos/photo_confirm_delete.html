@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm photo deletion{% endblock %}
+
+{% block content %}
+<h2>Confirm delete</h2>
+<div id="photo-delete-form">
+    {% load crispy_forms_tags %}
+    {% load thumbnail %}
+      <img src="{% thumbnail photo.original_image 200x0 %}">
+      <p>Are you sure you want to delete <b>{{ photo.title }}</b>? This action cannot be undone.</p>
+  <form enctype="multipart/form-data" action="" method="POST" class="uniForm">
+  {% csrf_token %} 
+    <div class="buttonHolder"><button type="submit" class="primaryAction">Delete Photo</button></div>
+    </form>
+</div>
+{% endblock %}

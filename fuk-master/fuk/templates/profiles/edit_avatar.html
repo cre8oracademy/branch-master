@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Change avatar{% endblock %}
+ 
+{% block content %}
+{% load sb_tags %}
+{% load crispy_forms_tags %}
+<h2>Change avatar for {{ user }} </h2>
+{% avatar user 'standard' %}
+<form action="" method="POST" enctype="multipart/form-data" class="uniForm">
+     {% csrf_token %}
+ {{ form|crispy }}
+      <div class="buttonHolder"> <button type="submit" name="submit" id="change-avatar-submit" class="primaryAction">Save</button></div>
+  </form>
+  
+{% endblock content %}

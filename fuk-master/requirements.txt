@@ -1,0 +1,30 @@
+BeautifulSoup==3.2.1
+Django==1.4.10
+Markdown==2.3.1
+MySQL-python==1.2.4
+PIL==1.1.7
+South==0.8.4
+argparse==1.2.1
+bbcode==1.0.15
+django-crispy-forms==1.4.0
+django-debug-toolbar==0.11.0
+django-envelope==0.7
+django-extensions==1.2.5
+django-guardian==1.1.1
+django-pagination==1.0.7
+-e git://github.com/dcramer/django-paypal.git@11835ce17e855200fc4b523c659f34f1d472b5d6#egg=django_paypal-master
+django-profiles==0.2
+django-registration==0.8
+-e git://github.com/BenAtWide/django-smileys.git@c13dae8c766eddb1055784660306e06f8ac0558c#egg=django_smileys-master
+django-taggit==0.11.1
+django-userena==1.2.0
+easy-thumbnails==1.2
+gunicorn==18.0
+micawber==0.3.0
+python-memcached==1.48
+raven==4.2.1
+recaptcha-client==1.0.6
+requests==1.2.0
+six==1.4.1
+sqlparse==0.1.10
+wsgiref==0.1.2

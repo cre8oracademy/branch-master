@@ -1,0 +1,21 @@
+<VirtualHost *>
+# what's the deal with DocumentRoot in these wsgi configs? TODO check.
+ServerName ${hostname}
+
+Alias /media/admin ${virtualenv_root}/lib/${python_version}/site-packages/django/contrib/admin/media/
+
+
+Alias /media/ ${root}/media/
+
+<Directory  ${root}/media/>
+Order allow,deny
+Allow from all
+</Directory>
+
+WSGIDaemonProcess ${hostname} threads=10 maximum-requests=1000 user=${user} group=${user}
+WSGIProcessGroup ${hostname}
+WSGIScriptAlias / ${code_root}/apache/${environment}.wsgi
+
+
+
+</VirtualHost>

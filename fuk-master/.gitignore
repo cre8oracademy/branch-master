@@ -1,0 +1,26 @@
+# ignore dev database
+fuk/dev.db
+# ignore test stuff that gets loaded in to media dirs
+fuk/media/avatars*
+fuk/media/photos*
+fuk/media/img*
+# and other uploaded images
+media/img/*
+media/uploads/*
+media/thumbs/*
+media/smileys/*
+# ignore 'original' files from failed merges
+*.orig
+# ignore pycs
+*.pyc
+.DS_Store
+.vagrant
+vagrant/imac
+vagrant/mba
+# ignore virtualenv, conf, static and log dirs
+fuk-env
+logs
+conf
+static
+.codeintel
+*.db

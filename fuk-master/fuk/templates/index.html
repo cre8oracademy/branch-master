@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+  Home
+{% endblock %}
+{% block content %}
+ <h2> Welcome to fuk.co.uk, the UK's No.1 independent fashion community. </h2>
+
+
+<div id="hp-main2" onclick="location.href='/threads/'" style="background: transparent url({{ STATIC_URL}}bank/homepage/rocknroll.jpg) no-repeat top left;">
+    &nbsp;
+    <div class="overlaid">
+
+<h2><a href="threads" style="color:#000;">fuk.co.uk brings you the best fashion talk on the web. Check it out.</a>
+</h2>
+
+    </div>
+</div>
+
+
+
+<br style="clear:both;">
+
+<div id="hp-main1" style="background: transparent url({{ STATIC_URL}}bank/homepage/watch.jpg) no-repeat top left;">
+    &nbsp;
+<div class="homepage_text" id="welcome">
+  
+   {% if user.is_authenticated %}
+    {% if user_info.is_elite %}
+        <p>Check out the <a href="{% url sb_category 'elite' %}" title="Elite forum">Elite forum</a>, a private place for GJs.</p>
+        {% else %}
+        <p>Upgrade to an <a href="{% url fuk_subscription %}">elite membership</a> for extra deals and features.</p>
+    {% endif %} 
+    {% else %}
+   <p><a href="{% url registration_register %}">Register for free</a> to take part, or <a href="subscribe">upgrade</a> to an elite membership for extra deals and features.</p>   
+   {% endif %}
+</div></div>
+
+{% endblock %}

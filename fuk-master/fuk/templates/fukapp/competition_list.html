@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+  Competitions
+{% endblock %}
+{% block content %}
+  <h2>Competitions</h2>
+  {% for object in object_list %}
+    <div class="competition_listing {% cycle 'odd' 'even' %}">
+      <a href="{% url competition_detail object.slug %}"><img src="{{ object.teaser_image.url }}" height="{{ object.teaser_image.height }}"  width="{{ object.teaser_image.width }}" alt="competition image"/></a>
+      <h3><a href="{% url competition_detail object.slug %}">{{ object.title}}</a></h3>
+    {{ object.teaser|safe }}
+      </div>
+  {% endfor %}
+{% endblock %}

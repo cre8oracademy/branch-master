@@ -1,0 +1,72 @@
+{% extends "snapboard/base_forum.html" %}
+{% block title %}
+  {{ thread.name }}
+{% endblock %}
+{% block forum-nav %}
+{% endblock %}
+{% block snapboard_main %}
+ {% if user.is_staff %}
+        <div class="thread-menu">
+                           <span>
+                    <a href="#" id="setsticky" onclick="sb.sticky('{{ thread.id }}');">
+                        {{ thread.sticky|yesno:"Unset sticky,Set sticky" }}
+                    </a> 
+                </span>
+                &#149;
+                <span>
+                  <a href="#" id="setpublish" onclick="sb.priv('{{ thread.id }}');">
+                      {{ thread.private|yesno:"Publish thread,Unpublish thread" }}
+                  </a>
+                </span>
+                &#149;
+                <span>
+                  <a href="#" id="setstatus" onclick="sb.close('{{ thread.id }}');">
+                      {{ thread.closed|yesno:"Open thread,Close thread" }}
+                  </a>
+                </span>
+                 </div>
+            {% endif %}
+
+        <h2 class="threadtitle">
+            <a href="{% url sb_category category.slug %}">{{ category }}</a>: 
+            {{ thread.name }}
+        </h2>
+    </p>
+    {% load paginator %}
+    {% digg_paginator %}
+    <br />
+    <div class="posts">
+      {% if current_page != 1 and not og_post %}
+      <a id="ogpost-link" href="#" onclick="sb.ogpost('{{ thread.id }}')">Show original post</a>
+      <br style="clear:right">
+      <div id="ogpost" class="odd"></div>  
+      {% endif %}
+      {% if og_post %}<div id="ogpost" class="post odd">
+      {% with og_post as post %}{% include "snapboard/include/post.html" %}{% endwith %}
+      </div>{% endif %}
+    {% for post in posts.object_list %} {# iterate through posts #}
+    <div class="post {% cycle 'even' 'odd'%}" id="post-{{ post.id }}">
+    {% include "snapboard/include/post.html" %}
+    </div>
+    {% endfor %} 
+    </div>
+    {% if not can_post %}
+      <div class="thread-login-prompt">
+        {% if not user.is_authenticated %}
+          <a href="{% url auth_login %}?next={{ request.path }}">Sign in</a> to post in this thread.
+        {% else %}
+          You don't have permission to post in this thread, sorry!
+        {% endif %}
+        </div>
+    {% endif %}
+    
+     {% digg_paginator %}
+    <br />
+    {% if can_post %}
+   <h3 id="replybox-heading">Add Reply</h3>
+    {% include "snapboard/include/post_form.html" %}
+    {% endif %}
+    {% endblock %}
+<!--
+vim: ai ts=4 sts=4 et sw=4 
+-->

@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}fuk.co.uk threads{% endblock %}</title>
+	{% block extra_head %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.bbcode.js"></script>
+
+
+<script type="text/javascript">
+
+var jsembed = false;
+
+var sb = {
+  urls: {
+    preview: "{% url sb_preview %}",
+    close: "{% url sb_close %}",
+    sticky: "{% url sb_sticky %}",
+    watch: "{% url sb_watch %}",
+    priv: "{% url sb_private %}",
+    ogpost: "{% url sb_ogpost %}",
+    quote: "{% url sb_quote %}",
+    moderate: "{% url sb_moderate %}"
+
+  }
+};
+
+sb.init = function() {
+
+};
+
+sb.post = function(url, data, update) {
+  $.post(url, data, update, "json");
+}
+
+sb.flag = function(post_id, status){
+  function update(response) {
+         sid= "#post-"+post_id
+    if (response.updated) {
+       $(sid).slideUp('slow')
+    }
+    else {
+    alert('Post '+post_id+' could not be updated.')
+    }
+  }
+    return sb.post(sb.urls.moderate, {"id": post_id, "status": 'p'}, update);
+}
+
+sb.preview = function() {
+  function update(response) {
+    $("#snap_preview_addpost").html(response.preview);
+    $("#post_preview").show();
+  }
+  return sb.post(sb.urls.preview, $("#id_text").val(), update);
+};
+
+sb.close = function(thread_id) {
+  function update(response) {
+    $("#setstatus").html(response.link)
+  }
+  return sb.post(sb.urls.close, {"id": thread_id}, update);
+}
+
+sb.sticky = function(thread_id) {
+  function update(response) {
+     $("#setsticky").html(response.link).fade();
+  }
+  return sb.post(sb.urls.sticky, {"id": thread_id}, update);
+}
+
+sb.priv = function(thread_id) {
+  function update(response) {
+    $("#setpublish").html(response.link)
+  }
+  return sb.post(sb.urls.priv, {"id": thread_id}, update);
+}
+
+sb.watch = function(thread_id) {
+  function update(response) {
+    $("#setwatch").html(response.link).fade();
+  }
+  return sb.post(sb.urls.watch, {"id": thread_id}, update);
+}
+
+sb.quote = function(post_id) {
+  function update(response) {
+    currtext=$("#id_text").val()
+    if (currtext=='') {
+      txt = response.post;
+    }
+    else {
+      txt=currtext+"\n"+response.post
+    }
+    $("#id_text").val(txt);
+    $("#id_text").focus()
+  }
+  return sb.post(sb.urls.quote, {"id": post_id}, update)
+}
+
+sb.ogpost = function(thread_id) {
+  function update(response) {
+    $("#ogpost").addClass("post");
+    $("#ogpost").html(response.post).slideDown('slow');
+    $("#ogpost-link").html("Hide original post");
+  }
+  if($("#ogpost").html()) {
+    $("#ogpost").html('').slideUp('slow');
+    $("#ogpost-link").html("Show original post");
+  }
+  else {
+   return sb.post(sb.urls.ogpost, {"id": thread_id}, update);
+ }
+}
+
+
+ $(document).ready(function() {
+   $("abbr.timeago").timeago();
+   $("#id_text,#id_post").bbcode();
+   $('#post_edit').preventDoubleSubmission();
+
+$('.post-body a').filter(function() {
+   return this.hostname && this.hostname !== location.hostname;
+}).attr("target", "_blank");
+
+ });
+
+
+
+ </script>
+ {% endblock %}
+     {% block sub-nav %} <ul class="subnav">
+          <li><a href="{% url sb_thread_list %}">Latest</a></li>
+          <li><a href="{% url sb_category_list %}">Categories</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url sb_favorites %}">Watch list</a></li>
+          {% if category %}
+          <li class="spaced"><a href="{% url sb_new_thread category.slug %}">Start Thread</a></li>
+          {% else %}      
+          <li class="spaced"><a href="{% url sb_new_thread_nocat %}">Start Thread</a></li>
+          {% endif %}
+          {% if thread %}
+          <li> <a href="#" id="setwatch" onclick="sb.watch('{{ thread.id }}');">
+              {{ is_fav|yesno:"Stop watching,Watch thread" }}
+            </a></li>
+          {% endif %}
+          {% endif %}
+      </ul>
+    {% endblock %}
+ {% block content %}
+                {% block snapboard_header %}
+                {% endblock %}
+                {% block snapboard_main %}
+                {% endblock %}
+ {% endblock %}
+ 

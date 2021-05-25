@@ -1,0 +1,12 @@
+Hi {{ user.username }},
+
+You have received a new private message on fuk.co.uk, you can view it at 
+
+http://{{ site.domain}}{% url userena_umessages_list %}
+
+cheers
+fuk.co.uk
+
+You are receiving this message because you have requested immediate notification of new private messages. To change that setting, go here:
+
+http://{{ site.domain}}{% url fprofiles_edit_profile %}

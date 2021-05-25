@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ comp.title }}{% endblock %}
+{% block extra_head %}
+{% if user_can_enter and not user_has_entered %}
+  <script type="text/javascript" charset="utf-8">
+    var ent_url = "{% url competition_enter %}"
+$(document).ready(function(){    
+    $('button').click(function(e) {
+      e.preventDefault();
+     $.post(ent_url, $('#compentry').serialize(), update, 'json');
+     function update(response) {
+       $('#entryfield').html(response.result)
+     }
+      });
+});
+
+  </script>
+{% endif %}
+{% endblock %}
+{% block content %}
+
+<h2>{{ comp.title }}</h2>
+<div class="competition">
+   {{ comp.body|safe }}
+<div class="competition-details">  
+{% if comp.is_live %}
+     <div id="entryfield">
+      <h4>Terms</h4>
+    {% if user.is_authenticated %}
+        {% if user_can_enter and not user_has_entered %}
+        <form id="compentry">
+          <input type="hidden" name="comp" value="{{ comp.comp_id }}">
+        <ul>
+        {% for term in splitterms  %}
+          <li>{{ term }}</li>
+        {% endfor %}
+        <li>Competition closes on {{ comp.end_date|date:"j F, Y"}}</li>
+        {% if comp.collect_emails %}
+        <li>Uncheck the box if you do not wish to receive email from {{ comp.promoter }}. <input type="checkbox" name="mailingpref" checked="checked" id="mailingpref"></li>
+        {% endif %}
+          </ul><br>
+    <button class="entrylink" type="submit">Enter for <b>{{ user.username }}</b></button>
+  
+  </form>
+        {% else %}
+        You have already entered this competition.
+        {% endif %}
+        {% if not user_can_enter %}
+          You need to be an <a href="{% url fuk_subscription %}">elite member</a> of fuk.co.uk to enter this competition.
+        {% endif %}
+    {% else %}
+        You need to <a href="{% url registration_register %}">signup</a> or login to enter this competition.
+    {% endif %}
+</div>
+{% else %}
+<p> This competition is now closed. {{ winners|safe }}</p>
+{% endif %}   
+     </div>
+  </div>  
+  <br style="clear:both" />
+
+{% endblock %}

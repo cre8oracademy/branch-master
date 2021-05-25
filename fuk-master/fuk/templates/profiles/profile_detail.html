@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}
+  Profile for {{ profile.user.username }}
+{% endblock %}
+{% block extra_head %}
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $("abbr.timeago").timeago();
+  });
+  </script>
+{% endblock %}
+{% block sub-nav %}
+<ul class="subnav">
+{% if user.is_staff %}
+  <li><a href="/admin/auth/user/{{ profile.user.id }}">Edit user</a></li>
+{% endif %}
+{% if user.id == profile.user.id %}
+    {% if perms.fprofiles.change_userprofile %}
+     <li><a href="{% url fprofiles.views.edit_profile %}">Edit profile</a></li>
+    {% endif %}
+     <li><a href="{% url fprofiles.views.change_av %}">Change avatar</a></li>
+    <li><a href="{% url auth_password_change %}">Change password</a></li>
+ {% endif %}</ul> 
+{% endblock %}
+{% block content %}
+{% load sb_tags %}
+<h2>Profile for {{ profile.user.username }}</h2>
+<div class="profile-avatar-display">
+{% avatar profile.user 'standard' %}
+<p class="profile-history"><span class="badge">{% if user_info.is_elite %}
+     <a href="{% url fuk_subscription %}">{{ user_info.badge }}</a>
+   {% else %}
+    {{ user_info.badge }} 
+    {% endif %}</span> Joined {{ user_info.joined|date:"j/n/y"}}
+   </p>
+</div>
+<div class="profile-display">
+{% if profile.location %}
+<p>  <span class="profile-label">Location:</span> {{ profile.location }}</p>
+{% endif %}
+{% if profile.website %}
+<p><span class="profile-label">Website:</span> {{profile.website|urlize}} </p>
+{% endif %}
+{% if profile.twitter %}
+<p><span class="profile-label">Twitter:</span> {{ profile.twitter }}</p> 
+{% endif %}
+</div>
+
+<div class="profile-pm-user">
+
+  {% if user.is_authenticated and user != profile.user %}
+  <p><a href="{% url userena_umessages_compose_to profile.user.id %}">Send {{ profile.user.username }} a message.</a></p>
+  {% endif %}
+
+</div> 
+<div class="profile-recent">
+  <h3>{{ profile.user.username }}'s recent posts</h3>
+  {% if history %}
+  <table>
+  {% for post in history %}
+  <tr class="{% cycle 'even' 'odd' %}"><td><a href="{% url sb_paged_thread_from_post post.id %}">{{ post.thread.name }}</a></td><td>{{ post.date|timeago }}</td></tr>
+  {% endfor %}
+  </table>
+  {% else %}
+  <p>No posts yet</p>
+  {% endif %}
+</div>
+
+{% endblock %}

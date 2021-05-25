@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if result == "success" %}
+		Thanks for subscribing!
+	{% else %}
+	Payment process cancelled
+	{% endif %}
+{% endblock title %}
+{% block content %}
+{% if result == "success" %}
+<h2>Thanks for subscribing!</h2>
+   <p>Welcome to the fuk Elite. It may take a few moments to upgrade your account - if the upgrade does not happen, please <a href="/contact/">contact us</a>.</p>
+	{% else %}
+	<h2>Payment cancelled</h2>
+	You have not been charged by PayPal.
+	{% endif %}
+{% endblock content %}

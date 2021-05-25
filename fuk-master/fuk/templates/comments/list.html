@@ -1,0 +1,29 @@
+<div class="posts">
+  {% for comment in comment_list %}
+  {% load sb_tags %}
+  <div class="post {% cycle 'odd' 'even' %}">
+  <div class="author-info">
+      <span class="author">{{ comment.user.username }}</span><br>
+      {% if comment.avatar %}
+          <img src="{{ SNAP_MEDIA_PREFIX }}/{{ comment.avatar }}" />
+      {% else %}
+          <img src="{{ STATIC_URL }}img/default-av.jpg" />
+      {% endif %}
+      <br />
+      <span class="author-history">{{ comment.user.get_profile.postcount }} posts since {{ comment.user.date_joined|date:"j/n/y"}}</span><br>
+      {{ comment.user.get_profile.badge }}
+    </div>
+    <div class="post-body">
+      <a name="c{{ comment.id }}"></a>
+      <div style="float:right" class="post-links"></div>
+      <span class="post-time"><abbr class="timeago" title="{{ comment.submit_date|date:"Y-m-d\TH:i:s\Z" }}">{{ comment.submit_date|date:"j M Y H:i" }}</abbr></span><br />
+
+      <div class="post_text">
+         {{ comment.comment|striptags }} 
+
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>

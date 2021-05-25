@@ -1,0 +1,260 @@
+[{
+    "pk": 1,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "redsquareclothing.co.uk",
+        "name": "Red Square Clothing",
+        "linkcode": "http://track.webgains.com/click.html?wgcampaignid=20187&wgprogramid=4968&wgtarget={url}"
+    }
+},
+{
+    "pk": 2,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "brownsfashion.com",
+        "name": "Browns Fashion",
+        "linkcode": "http://click.linksynergy.com/fs-bin/click?id=1JvCaNRV6Ao&subid=&offerid=163081.1&type=10&tmpid=3749&RD_PARM1={url}"
+    }
+},
+{
+    "pk": 3,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "coggles.com",
+        "name": "Coggles",
+        "linkcode": "http://click.linksynergy.com/fs-bin/click?id=1JvCaNRV6Ao&subid=&offerid=205633.1&type=10&tmpid=6793&RD_PARM1={url}"
+    }
+},
+{
+    "pk": 4,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "groupon.co.uk",
+        "name": "Groupon",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=2891&awinaffid=42161&clickref=threads&p={url}"
+    }
+},
+{
+    "pk": 5,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "kiosk78.co.uk",
+        "name": "Kiosk78",
+        "linkcode": "http://track.webgains.com/click.html?wgcampaignid=20187&wgprogramid=3397&clickref=threads&wgtarget={url}"
+    }
+},
+{
+    "pk": 6,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "cloggs.co.uk",
+        "name": "Cloggs",
+        "linkcode": "http://track.webgains.com/click.html?wgcampaignid=20187&wgprogramid=116&clickref=threads&wgtarget={url}"
+    }
+},
+{
+    "pk": 7,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "boloonline.com",
+        "name": "Bolo",
+        "linkcode": "http://track.webgains.com/click.html?wgcampaignid=20187&wgprogramid=3220&wgtarget={url}"
+    }
+},
+{
+    "pk": 8,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "baselondon.com",
+        "name": "Base London",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=2696&awinaffid=42161&clickref=threads&p={url}"
+    }
+},
+{
+    "pk": 9,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "oki-ni.com",
+        "name": "OKI-NI",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=2083&awinaffid=42161&clickref=threads&p={url}%3Fcm_mmc%3DAWIN-_-!!!id!!!-_-Dee"
+    }
+},
+{
+    "pk": 10,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "yoox.com",
+        "name": "Yoox",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=2017&awinaffid=42161&clickref=threads&p={url}"
+    }
+},
+{
+    "pk": 11,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "clarks.co.uk",
+        "name": "Clarks",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=2515&awinaffid=42161&clickref=threads&p={url}"
+    }
+},
+{
+    "pk": 12,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "urbanoutfitters.co.uk",
+        "name": "Urban Outfitters",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=2077&awinaffid=42161&clickref=threads&p={url}"
+    }
+},
+{
+    "pk": 13,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "burton.co.uk",
+        "name": "Burton",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=1052&awinaffid=42161&clickref=threads&p={url}"
+    }
+},
+{
+    "pk": 14,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "ln-cc.com",
+        "name": "LN-CC",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=3098&awinaffid=42161&clickref=threads&p={url}"
+    }
+},
+{
+    "pk": 15,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "my-wardrobe.com",
+        "name": "my-wardrobe",
+        "linkcode": "http://track.webgains.com/click.html?wgcampaignid=20187&wgprogramid=2036&clickref=threads&wgtarget={url}"
+    }
+},
+{
+    "pk": 16,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "allsaints.com",
+        "name": "All Saints",
+        "linkcode": "http://track.webgains.com/click.html?wgcampaignid=20187&wgprogramid=4313&clickref=threads&wgtarget={url}"
+    }
+},
+{
+    "pk": 17,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "size.co.uk",
+        "name": "Size",
+        "linkcode": "http://www.awin1.com/cread.php?awinmid=2767&awinaffid=42161&clickref=threads&p={url}"
+    }
+},
+{
+    "pk": 18,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "ebay.co.uk",
+        "name": "eBay UK",
+        "linkcode": "http://rover.ebay.com/rover/1/710-53481-19255-0/1?ff3=4&pub=5574670229&toolid=10001&campid=5335910736&mpre={url}"
+    }
+},
+{
+    "pk": 19,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "uniqlo.com",
+        "name": "Uniqlo",
+        "linkcode": "http://click.linksynergy.com/fs-bin/click?id=1JvCaNRV6Ao&subid=&offerid=139481.1&type=10&tmpid=3323&RD_PARM1={url}"
+    }
+},
+{
+    "pk": 20,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "prettygreen.com",
+        "name": "Pretty Green",
+        "linkcode": "http://click.linksynergy.com/fs-bin/click?id=1JvCaNRV6Ao&subid=&offerid=217556.1&type=10&tmpid=7163&RD_PARM1={url}"
+    }
+},
+{
+    "pk": 21,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "tedbaker.com",
+        "name": "Ted Baker",
+        "linkcode": "http://click.linksynergy.com/fs-bin/click?id=1JvCaNRV6Ao&subid=&offerid=218596.1&type=10&tmpid=6171&RD_PARM1={url}"
+    }
+},
+{
+    "pk": 22,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "glassboutique.co.uk",
+        "name": "Glass Boutique",
+        "linkcode": "http://www.paidonresults.net/c/16652/1/302/0/{url}"
+    }
+},
+{
+    "pk": 23,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "ebay.com",
+        "name": "ebay US",
+        "linkcode": "http://rover.ebay.com/rover/1/711-53200-19255-0/1?ff3=4&pub=5574670229&toolid=10001&campid=5335910736&customid=&mpre={url}"
+    }
+},
+{
+    "pk": 24,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "aphrodite1994.com",
+        "name": "Aphrodite",
+        "linkcode": "http://www.paidonresults.net/c/16652/1/493/{url}"
+    }
+},
+{
+    "pk": 25,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "amazon.co.uk",
+        "name": "Amazon",
+        "linkcode": "http://www.amazon.co.uk/gp/redirect.html?ie=UTF8&location={url}%2F&tag=fash-21&linkCode=ur2&camp=1634&creative=6738"
+    }
+},
+{
+    "pk": 26,
+    "model": "fukapp.affiliate",
+    "fields": {
+        "active": true,
+        "domain": "vanmildert.com",
+        "name": "Van Mildert",
+        "linkcode": "http://track.webgains.com/click.html?wgcampaignid=20187&wgprogramid=2609&clickref=threads&wgtarget={url}"
+    }
+}]

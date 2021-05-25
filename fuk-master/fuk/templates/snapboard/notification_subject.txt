@@ -1,0 +1,1 @@
+Update to {{ threads|pluralize:"a,"}} thread{{ threads|pluralize }} you are watching on fuk.co.uk

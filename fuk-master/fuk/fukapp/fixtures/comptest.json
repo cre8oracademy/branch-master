@@ -1,0 +1,36 @@
+[{
+    "pk": 1,
+    "model": "fukapp.competition",
+    "fields": {
+        "comp_id": "watcgh2",
+        "body": "lkjlkj",
+        "end_date": "2011-11-10",
+        "title": "watch comp is a slow one",
+        "eligibility": "E",
+        "promoter": "lkj",
+        "start_date": "2012-09-02",
+        "collect_emails": true,
+        "teaser": "lkjjl",
+        "entry_count": 0,
+        "published": true,
+        "slug": "watch-comp-slow-one"
+    }
+},
+{
+    "pk": 2,
+    "model": "fukapp.competition",
+    "fields": {
+        "comp_id": "lajskdf",
+        "body": "asdfas dfasdf ",
+        "end_date": "2013-11-10",
+        "title": "other comp",
+        "eligibility": "G",
+        "promoter": "lkasdf",
+        "start_date": "2012-09-01",
+        "collect_emails": false,
+        "teaser": "lak;sdjfklasjdf",
+        "entry_count": 0,
+        "published": true,
+        "slug": "other-comp"
+    }
+}]
